@@ -7,7 +7,16 @@
             "type": "static-text",
             "title": "Welcome to EcoTwin! 🌱",
             "content": "Let's build your sustainable digital twin! Answer a few quick questions about your lifestyle so we can estimate your carbon footprint and suggest personalized eco-friendly improvements.",
-            "height": 3
+            "height": 2
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 2,
+            "type": "static-text",
+            "title": "How EcoTwin Works 💚",
+            "content": "EcoTwin helps you understand and reduce your environmental impact through several key features:\n\n📊 PROFILE ANALYSIS\nShare your lifestyle choices to get a detailed carbon footprint estimate and personalized recommendations.\n\n🧬 ECODNA PROFILING\nReceive a unique sustainability profile that identifies your environmental values, habits, and growth opportunities.\n\n📈 PROGRESS TRACKING\nLog your eco-friendly actions and see their impact through our monthly reports and progress tracker.\n\n🔮 SIMULATION TOOLS\nExplore 'what-if' scenarios and plan sustainable journeys with our interactive simulators.\n\n📝 PRACTICAL GUIDES\nAccess detailed guides for recycling and sustainable living, tailored to your current habits.\n\nEvery small change adds up to meaningful environmental impact. Start your sustainability journey today!",
+            "height": 4
         },
         {
             "defaultValue": null,
@@ -20,7 +29,7 @@
                 "Walk",
                 "Electric Vehicle"
             ],
-            "y": 3,
+            "y": 6,
             "placeholder": "How do you usually commute?",
             "type": "select",
             "title": "Transportation",
@@ -36,7 +45,7 @@
                 "Vegan",
                 "Flexitarian"
             ],
-            "y": 3,
+            "y": 6,
             "placeholder": "What best describes your diet?",
             "type": "select",
             "title": "Diet",
@@ -52,7 +61,7 @@
                 "Solar",
                 "Mixed"
             ],
-            "y": 5,
+            "y": 8,
             "placeholder": "What powers your home?",
             "type": "select",
             "title": "Energy Source",
@@ -68,10 +77,85 @@
                 "Rarely",
                 "Thrift Only"
             ],
-            "y": 5,
+            "y": 8,
             "placeholder": "How often do you buy new clothes?",
             "type": "select",
             "title": "Shopping Habits",
+            "height": 2
+        },
+        {
+            "x": 0,
+            "width": 4,
+            "y": 10,
+            "type": "number-input",
+            "title": "Home Size",
+            "placeholder": "Square meters/feet",
+            "min": 20,
+            "max": 1000,
+            "step": 10,
+            "numberWidgetMode": "number",
+            "height": 2
+        },
+        {
+            "defaultValue": null,
+            "x": 4,
+            "width": 4,
+            "y": 10,
+            "options": [
+                "Apartment",
+                "House",
+                "Townhouse",
+                "Studio"
+            ],
+            "placeholder": "Select your home type",
+            "type": "select",
+            "title": "Home Type",
+            "height": 2
+        },
+        {
+            "min": 1,
+            "max": 8,
+            "defaultValue": "1",
+            "x": 8,
+            "width": 4,
+            "y": 10,
+            "numberWidgetMode": "number",
+            "step": 1,
+            "placeholder": "Number of people in household",
+            "type": "number-input",
+            "title": "Household Size",
+            "height": 2
+        },
+        {
+            "defaultValue": null,
+            "x": 0,
+            "width": 6,
+            "options": [
+                "Daily",
+                "2-3 times/week",
+                "Weekly",
+                "Rarely"
+            ],
+            "y": 12,
+            "placeholder": "How often do you use your main transport?",
+            "type": "select",
+            "title": "Transport Frequency",
+            "height": 2
+        },
+        {
+            "defaultValue": null,
+            "x": 6,
+            "width": 6,
+            "y": 12,
+            "options": [
+                "Temperate",
+                "Tropical",
+                "Cold",
+                "Desert"
+            ],
+            "placeholder": "Select your climate zone",
+            "type": "select",
+            "title": "Climate Zone",
             "height": 2
         },
         {
@@ -83,7 +167,7 @@
                 "Compost & Recycle",
                 "Neither"
             ],
-            "y": 7,
+            "y": 14,
             "placeholder": "Do you compost or recycle?",
             "type": "select",
             "title": "Waste Management",
@@ -92,10 +176,23 @@
         {
             "x": 0,
             "width": 12,
-            "y": 9,
+            "y": 16,
             "type": "inferred-text",
             "title": "Your Eco Profile",
             "prompt": "Based on the user's responses:\n- Transportation: [Transportation]\n- Diet: [Diet]\n- Energy Source: [Energy Source]\n- Shopping Habits: [Shopping Habits]\n- Waste Management: [Waste Management]\n\nGenerate a sustainability profile summary. Estimate their annual carbon footprint in kilograms of CO₂. Highlight their strengths and suggest two areas for improvement. Make the tone friendly and encouraging.",
+            "parameters": {
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
+                "temperature": 0
+            },
+            "height": 6
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 22,
+            "type": "inferred-text",
+            "title": "Your EcoDNA Profile 🧬",
+            "prompt": "Based on the user's profile:\n- Transportation: [Transportation]\n- Diet: [Diet]\n- Energy: [Energy Source]\n- Shopping: [Shopping Habits]\n- Waste: [Waste Management]\n\nCreate a unique 'eco fingerprint' analysis that includes:\n\n1. CORE VALUES & MOTIVATIONS\n- Identify key environmental values based on their choices\n- Highlight primary motivations (e.g., climate impact, cost savings, health)\n\n2. HABIT PATTERNS\n- Strongest eco-friendly habits\n- Areas with room for growth\n- Behavioral insights\n\n3. SUSTAINABILITY ARCHETYPE\n- Classify their approach (e.g., Conscious Consumer, Energy Saver, Zero Waste Enthusiast)\n- Explain why this fits their pattern\n\n4. PERSONALIZED GROWTH PATH\n- Next achievable steps\n- Long-term sustainability goals\n- Custom recommendations\n\nKeep the tone encouraging and focus on positive potential for impact.",
             "parameters": {
                 "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
                 "temperature": 0
@@ -105,7 +202,57 @@
         {
             "x": 0,
             "width": 12,
-            "y": 17,
+            "y": 30,
+            "type": "inferred-text",
+            "title": "Seasonal Impact Optimizer 🌤️",
+            "prompt": "Based on user context:\n- Home: [Home Type], [Home Size] m²\n- Climate: [Climate Zone]\n- Transport: [Transportation] ([Transport Frequency])\n- Energy: [Energy Source]\n\n1. TODAY'S QUICK WINS ✨\n- Morning routine tip\n- Transit optimization\n- Energy-saving moment\n\n2. THIS WEEK'S FOCUS 🍁\n- Weather forecast adaption\n- Seasonal resource tips\n- Local opportunities\n\n3. COMFORT-BALANCED TIPS 🏠\n- Indoor comfort strategies\n- Energy-efficient alternatives\n- Budget-conscious options\n\n4. FAMILY COORDINATION 👪\n- Shared routines\n- Group activities\n- Resource sharing\n\n5. SEASONAL ACHIEVEMENTS 🏆\n- Current streak: __ days\n- Resources saved: ______\n- Next milestone: ______\n\nMake it practical and family-friendly!",
+            "parameters": {
+                "temperature": 0,
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+            },
+            "height": 10
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 38,
+            "type": "static-text",
+            "title": "Weekly Eco Challenge 🎯",
+            "content": "Take on personalized sustainability challenges tailored to your lifestyle and track your progress.",
+            "height": 2
+        },
+        {
+            "defaultValue": null,
+            "x": 0,
+            "width": 6,
+            "options": [
+                "Easy",
+                "Medium",
+                "Hard"
+            ],
+            "y": 40,
+            "placeholder": "Select challenge difficulty",
+            "type": "select",
+            "title": "Challenge Level",
+            "height": 2
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 42,
+            "type": "inferred-text",
+            "title": "Your Weekly Challenge 🌟",
+            "prompt": "Based on user profile and [Challenge Level] difficulty:\n- Transport: [Transportation] ([Transport Frequency])\n- Climate: [Climate Zone]\n- Home: [Home Type]\n- Diet: [Diet]\n\n1. THIS WEEK'S QUEST 🎯\n- Epic Challenge: [Clear mission statement]\n- Potential Impact: 🌳 Trees Saved | 💧 Water Saved | ⚡ Energy Saved\n- XP & Achievements: 🎖 Points Available | 🏆 Badges Unlockable\n\n2. PROGRESS TRACKER 📈\n⬜ Day 1: ________________\n⬜ Day 2: ________________\n⬜ Day 3: ________________\n⬜ Day 4: ________________\n⬜ Day 5: ________________\n⬛️ Weekend Bonus Challenge!\n\n3. POWER-UPS & SUPPORT 💪\n- Quick Win Tips ✨\n- Challenge Hacks 🔑\n- Solution Guide 📖\n\n4. COMMUNITY & IMPACT 🌎\n- Global Participants: [Number]\n- Total Impact: [Resources Saved]\n- Your Rank: [Position]\n\nMake it fun, achievable, and impactful!",
+            "parameters": {
+                "temperature": 0,
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+            },
+            "height": 8
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 50,
             "type": "static-text",
             "title": "Carbon Footprint Simulator 🔄",
             "content": "Try toggling different lifestyle changes below to see how they affect your carbon footprint. Small changes can make a big impact!",
@@ -114,70 +261,69 @@
         {
             "x": 0,
             "width": 12,
-            "y": 19,
+            "y": 52,
             "type": "inferred-text",
             "title": "Simulated Impact",
             "prompt": "Based on the current profile:\n- Transportation: [Transportation]\n- Diet: [Diet]\n- Energy Source: [Energy Source]\n- Shopping Habits: [Shopping Habits]\n- Waste Management: [Waste Management]\n\nEstimate the potential reduction in carbon footprint if the user made sustainable changes in their top 2 impact areas. Provide fun analogies (e.g., trees planted, flights avoided, elephants saved). Make suggestions specific and actionable.",
             "parameters": {
+                "temperature": 0,
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+            },
+            "height": 6
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 58,
+            "type": "inferred-text",
+            "title": "What-If Simulator 🔮",
+            "prompt": "Based on current profile ([Transportation], [Diet], [Energy Source], [Shopping Habits], [Waste Management]), simulate 3 high-impact changes:\n\n1. TRANSPORT UPGRADE\n- Current vs. lowest-carbon option\n- Annual CO₂ savings\n- Practical first step\n\n2. DIET SHIFT\n- Current vs. eco-friendly option\n- Resource impact\n- Easy starting point\n\n3. LIFESTYLE CHANGE\n- Most impactful habit switch\n- Environmental benefit\n- Simple beginning step\n\nUse engaging comparisons (e.g., '= 50 trees') and focus on achievable changes.",
+            "parameters": {
+                "temperature": 0,
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+            },
+            "height": 6
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 64,
+            "type": "static-text",
+            "title": "Personal Carbon Budget 💳",
+            "content": "Set and track your carbon budget to stay mindful of your environmental impact. Monitor your emissions and get personalized suggestions to meet your goals.",
+            "height": 2
+        },
+        {
+            "min": 1000,
+            "max": 10000,
+            "defaultValue": "5000",
+            "x": 0,
+            "width": 6,
+            "y": 66,
+            "numberWidgetMode": "slider-numeric",
+            "step": 100,
+            "placeholder": "Set your yearly CO₂ target (kg)",
+            "type": "number-input",
+            "title": "Carbon Budget Goal",
+            "height": 2
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 68,
+            "type": "inferred-text",
+            "title": "Smart Budget Tracker 💳",
+            "prompt": "Based on profile and goal of [Carbon Budget Goal] kg CO₂/year:\n- Transport: [Transportation]\n- Energy: [Energy Source]\n- Diet: [Diet]\n- Climate: [Climate Zone]\n\n1. PROGRESS VISUALIZATION 📈\n🟢 Current: ____ kg CO₂ (XX%)\n🟡 Target: ____ kg CO₂\n⬛️ Remaining: ____ kg CO₂\n\n2. ACHIEVEMENTS UNLOCKED 🏆\n⬜ Early Bird (-10% below target)\n⬜ Resource Master (-25% energy use)\n⬜ Transit Champion (50% green transport)\n⬜ Next Badge: _____________\n\n3. ACTION PLAN 📋\n🟢 Today: Quick win action\n🟡 This Week: Medium goal\n🟙 This Month: Major milestone\n\n4. SMART STRATEGIES 🗺\n- Seasonal tips for [Climate Zone]\n- Budget-friendly options\n- Family coordination ideas\n\nKeep it visual and motivating!",
+            "parameters": {
                 "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
                 "temperature": 0
             },
             "height": 8
         },
         {
-            "initialUserMessage": "My transportation method is [Transportation], my diet is [Diet], I use [Energy Source] for energy, my shopping habits are [Shopping Habits], and my waste management approach is [Waste Management]. I'm looking for personalized sustainability advice.",
             "x": 0,
             "width": 12,
-            "y": 27,
-            "placeholder": "Ask me anything about sustainable living!",
-            "type": "chat",
-            "title": "EcoCoach Chat",
-            "initialAssistantMessage": "Hi! I'm your AI EcoCoach, ready to help you make sustainable choices. I can see your lifestyle profile and I'm here to offer personalized advice. Feel free to ask me anything about reducing your environmental impact!",
-            "parameters": {
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
-                "temperature": 0
-            },
-            "height": 12
-        },
-        {
-            "x": 0,
-            "y": 39,
-            "type": "text-input",
-            "title": "Eco Action",
-            "width": 12,
-            "height": 4,
-            "placeholder": "What sustainable action did you take today?"
-        },
-        {
-            "x": 0,
-            "y": 43,
-            "type": "inferred-text",
-            "title": "Impact Calculator",
-            "width": 12,
-            "height": 6,
-            "prompt": "Based on the action '[Eco Action]', calculate the approximate environmental impact. Include both immediate and annual impact if this action became a habit. Make it engaging with creative comparisons.",
-            "parameters": {
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
-                "temperature": 0
-            }
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 55,
-            "type": "inferred-text",
-            "title": "Recycling Guide",
-            "prompt": "Based on the user's waste management approach '[Waste Management]', provide a practical recycling guide. Include:\n\n1. Basic recycling rules and best practices\n2. What items can and cannot be recycled\n3. How to properly prepare items for recycling (cleaning, sorting, etc.)\n4. Common recycling mistakes to avoid\n5. Tips for reducing waste before recycling\n\nIf they already compost and recycle, include advanced tips. If they're new to recycling, focus on beginner-friendly guidance. Make the instructions clear and actionable.",
-            "parameters": {
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
-                "temperature": 0
-            },
-            "height": 8
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 63,
+            "y": 76,
             "type": "static-text",
             "title": "Journey Planner 🗺️",
             "content": "Compare different travel options to make informed, sustainable choices. Enter your trip details below to see time, cost, and environmental impact of each mode.",
@@ -185,8 +331,21 @@
         },
         {
             "x": 0,
+            "width": 12,
+            "y": 76,
+            "type": "inferred-text",
+            "title": "Recycling Guide",
+            "prompt": "Based on the user's waste management approach '[Waste Management]', provide a practical recycling guide. Include:\n\n1. Basic recycling rules and best practices\n2. What items can and cannot be recycled\n3. How to properly prepare items for recycling (cleaning, sorting, etc.)\n4. Common recycling mistakes to avoid\n5. Tips for reducing waste before recycling\n\nIf they already compost and recycle, include advanced tips. If they're new to recycling, focus on beginner-friendly guidance. Make the instructions clear and actionable.",
+            "parameters": {
+                "temperature": 0,
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+            },
+            "height": 6
+        },
+        {
+            "x": 0,
             "width": 6,
-            "y": 65,
+            "y": 78,
             "type": "text-input",
             "title": "Start Location",
             "placeholder": "Where are you starting from?",
@@ -195,7 +354,7 @@
         {
             "x": 6,
             "width": 6,
-            "y": 65,
+            "y": 78,
             "type": "text-input",
             "title": "Destination",
             "placeholder": "Where are you going to?",
@@ -205,7 +364,7 @@
             "defaultValue": null,
             "x": 0,
             "width": 6,
-            "y": 67,
+            "y": 80,
             "options": [
                 "Time",
                 "Cost",
@@ -220,7 +379,7 @@
             "defaultValue": "1",
             "x": 6,
             "width": 6,
-            "y": 67,
+            "y": 80,
             "type": "number-input",
             "title": "Passengers",
             "placeholder": "Number of travelers",
@@ -233,68 +392,20 @@
         {
             "x": 0,
             "width": 12,
-            "y": 69,
+            "y": 82,
             "type": "inferred-text",
             "title": "Journey Comparison",
-            "prompt": "Based on the journey from '[Start Location]' to '[Destination]' for [Passengers] passenger(s), with priority on [Priority], generate a detailed comparison of transport options.\n\nProvide a structured analysis including:\n\n1. COMPARISON TABLE\nFor each mode (Car, Public Transit, Cycling, Walking):\n- Estimated time range (min-max)\n- Cost range (£)\n- CO₂ emissions (kg)\n- Efficiency metrics (CO₂/minute, CO₂/£)\n\n2. RECOMMENDED OPTION\n- Best choice based on [Priority]\n- % difference vs. car baseline\n- Per-person environmental impact\n\n3. SMART TIPS\n- Relevant cost-saving options (railcards, off-peak travel, car-sharing)\n- Route-specific advice\n- Weather considerations\n\n4. MODE-SPECIFIC NOTES\n- Why certain options might not be practical\n- Special considerations\n\n5. ASSUMPTIONS & LIMITATIONS\n- Distance estimates\n- Average speeds\n- Fuel efficiency\n- Occupancy rates\n- Weather impact\n\nKeep the tone practical and informative while acknowledging uncertainties.",
+            "prompt": "Compare transport options from '[Start Location]' to '[Destination]' for [Passengers] passenger(s), prioritizing [Priority].\n\n1. QUICK COMPARISON\n🚗 Car: time/cost/CO₂\n🚌 Transit: time/cost/CO₂\n🚲 Bike: time/cost/CO₂\n👣 Walk: time/cost/CO₂\n\n2. RECOMMENDED OPTION\n- Best choice for [Priority]\n- Environmental impact\n- Cost-benefit ratio\n\n3. SMART TIPS\n- Money-saving ideas\n- Eco-friendly routes\n- Practical considerations\n\nKeep it concise and practical.",
             "parameters": {
                 "temperature": 0,
                 "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
             },
-            "height": 12
+            "height": 6
         },
         {
             "x": 0,
             "width": 12,
-            "y": 81,
-            "type": "inferred-text",
-            "title": "Your EcoDNA Profile 🧬",
-            "prompt": "Based on the user's profile:\n- Transportation: [Transportation]\n- Diet: [Diet]\n- Energy: [Energy Source]\n- Shopping: [Shopping Habits]\n- Waste: [Waste Management]\n\nCreate a unique 'eco fingerprint' analysis that includes:\n\n1. CORE VALUES & MOTIVATIONS\n- Identify key environmental values based on their choices\n- Highlight primary motivations (e.g., climate impact, cost savings, health)\n\n2. HABIT PATTERNS\n- Strongest eco-friendly habits\n- Areas with room for growth\n- Behavioral insights\n\n3. SUSTAINABILITY ARCHETYPE\n- Classify their approach (e.g., Conscious Consumer, Energy Saver, Zero Waste Enthusiast)\n- Explain why this fits their pattern\n\n4. PERSONALIZED GROWTH PATH\n- Next achievable steps\n- Long-term sustainability goals\n- Custom recommendations\n\nKeep the tone encouraging and focus on positive potential for impact.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 10
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 91,
-            "type": "inferred-text",
-            "title": "What-If Simulator 🔮",
-            "prompt": "Based on the user's current habits:\n- Transportation: [Transportation]\n- Diet: [Diet]\n- Energy: [Energy Source]\n- Shopping: [Shopping Habits]\n- Waste: [Waste Management]\n\nSimulate the environmental impact of three radical lifestyle changes:\n\n1. MAXIMUM TRANSPORT CHANGE\nIf they switched to the lowest-carbon transport option available\n\n2. COMPLETE DIET TRANSFORMATION\nIf they adopted the most eco-friendly diet possible\n\n3. ZERO WASTE LIFESTYLE\nIf they maximized recycling/composting and minimized consumption\n\nFor each scenario, provide:\n- Estimated CO₂ reduction (kg/year)\n- Other environmental benefits\n- Practical challenges to consider\n- Steps to gradually move in this direction\n\nUse engaging comparisons (e.g., trees saved, cars off the road) and maintain a realistic, informative tone.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 10
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 101,
-            "type": "inferred-text",
-            "title": "Monthly Impact Report 📈",
-            "prompt": "Based on the user's profile and recent actions:\n- Current Transport: [Transportation]\n- Current Diet: [Diet]\n- Energy Source: [Energy Source]\n- Shopping Habits: [Shopping Habits]\n- Waste Management: [Waste Management]\n- Recent Action: [Eco Action]\n\nGenerate a comprehensive monthly impact report:\n\n1. ENVIRONMENTAL IMPACT SUMMARY\n- Total CO₂ emissions prevented\n- Resources conserved\n- Positive environmental contributions\n\n2. KEY ACHIEVEMENTS\n- Strongest areas of improvement\n- Successful habit changes\n- Notable milestones\n\n3. IMPACT COMPARISON\n- Compare to average household\n- Month-over-month changes\n- Progress towards goals\n\n4. NEXT MONTH'S FOCUS\n- Suggested focus areas\n- Specific, achievable targets\n- Upcoming challenges\n\nInclude engaging visualizations through text (e.g., 'Your impact = 🌳 x 50 trees') and maintain an encouraging, achievement-focused tone.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 12
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 113,
-            "type": "static-text",
-            "title": "How EcoTwin Works 💚",
-            "content": "EcoTwin helps you understand and reduce your environmental impact through several key features:\n\n📊 PROFILE ANALYSIS\nShare your lifestyle choices to get a detailed carbon footprint estimate and personalized recommendations.\n\n🧬 ECODNA PROFILING\nReceive a unique sustainability profile that identifies your environmental values, habits, and growth opportunities.\n\n📈 PROGRESS TRACKING\nLog your eco-friendly actions and see their impact through our monthly reports and progress tracker.\n\n🔮 SIMULATION TOOLS\nExplore 'what-if' scenarios and plan sustainable journeys with our interactive simulators.\n\n📝 PRACTICAL GUIDES\nAccess detailed guides for recycling and sustainable living, tailored to your current habits.\n\nEvery small change adds up to meaningful environmental impact. Start your sustainability journey today!",
-            "height": 8
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 121,
+            "y": 82,
             "type": "static-text",
             "title": "Sustainable Decision Helper 🧹",
             "content": "Need help making eco-friendly choices? Ask specific questions about product comparisons or lifestyle decisions, and get detailed sustainability insights.",
@@ -303,7 +414,7 @@
         {
             "x": 0,
             "width": 12,
-            "y": 123,
+            "y": 84,
             "type": "text-input",
             "title": "Your Question",
             "placeholder": "Example: Which is better for the planet: oat milk or almond milk? Or: Should I repair my phone or buy new?",
@@ -312,7 +423,7 @@
         {
             "x": 0,
             "width": 12,
-            "y": 125,
+            "y": 86,
             "type": "inferred-text",
             "title": "Sustainability Analysis",
             "prompt": "Analyze the environmental impact of the options in '[Your Question]'. Provide:\n\n1. COMPARISON BREAKDOWN\n- Environmental impact of each option\n- Carbon footprint comparison\n- Resource usage (water, energy, etc.)\n\n2. LIFECYCLE ANALYSIS\n- Production impact\n- Usage impact\n- End-of-life considerations\n\n3. CONTEXTUAL FACTORS\n- Geographic considerations\n- Seasonal factors\n- Usage patterns\n\n4. RECOMMENDATION\n- Most sustainable choice\n- Key reasons why\n- Potential trade-offs\n\n5. ADDITIONAL TIPS\n- Ways to minimize impact\n- Long-term considerations\n- Alternative options\n\nKeep the tone informative and practical, acknowledging that sustainability choices often involve complex trade-offs.",
@@ -320,12 +431,59 @@
                 "temperature": 0,
                 "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
             },
-            "height": 10
+            "height": 8
         },
         {
             "x": 0,
             "width": 12,
-            "y": 135,
+            "y": 88,
+            "type": "static-text",
+            "title": "Food Carbon Calculator 🍽️",
+            "content": "Calculate the carbon footprint of your meals and discover more sustainable food choices. Get personalized recommendations based on your dietary preferences.",
+            "height": 2
+        },
+        {
+            "defaultValue": null,
+            "x": 0,
+            "width": 6,
+            "options": [
+                "Breakfast",
+                "Lunch",
+                "Dinner",
+                "Snack"
+            ],
+            "y": 90,
+            "placeholder": "Select meal type",
+            "type": "select",
+            "title": "Meal Type",
+            "height": 2
+        },
+        {
+            "x": 6,
+            "width": 6,
+            "y": 90,
+            "type": "text-input",
+            "title": "Main Ingredients",
+            "placeholder": "List main ingredients (e.g., rice, chicken, vegetables)",
+            "height": 2
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 92,
+            "type": "inferred-text",
+            "title": "Meal Impact Analysis",
+            "prompt": "Analyze the environmental impact of a [Meal Type] with ingredients: [Main Ingredients]\nConsider the user's diet profile: [Diet]\n\nProvide a comprehensive meal analysis:\n\n1. CARBON FOOTPRINT\n- Total meal CO₂ impact\n- Per-ingredient breakdown\n- Comparison to alternatives\n\n2. SUSTAINABILITY FACTORS\n- Local vs. imported ingredients\n- Seasonal considerations\n- Production methods\n\n3. NUTRITION & IMPACT BALANCE\n- Nutritional benefits\n- Environmental trade-offs\n- Health considerations\n\n4. IMPROVEMENT SUGGESTIONS\n- Lower-impact alternatives\n- Portion optimization\n- Seasonal swaps\n\n5. PRACTICAL TIPS\n- Storage for minimizing waste\n- Batch cooking ideas\n- Leftover usage\n\nKeep suggestions practical and aligned with user's dietary preferences.",
+            "parameters": {
+                "temperature": 0,
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+            },
+            "height": 8
+        },
+        {
+            "x": 0,
+            "width": 12,
+            "y": 94,
             "type": "static-text",
             "title": "EcoSwap Marketplace 🔄",
             "content": "Discover sustainable alternatives to common purchases. Select a product category and get personalized recommendations for eco-friendly, second-hand, or local options.",
@@ -343,7 +501,7 @@
                 "Kitchen",
                 "Sports & Leisure"
             ],
-            "y": 137,
+            "y": 96,
             "placeholder": "What are you looking for?",
             "type": "select",
             "title": "Product Category",
@@ -359,7 +517,7 @@
                 "Local",
                 "Any"
             ],
-            "y": 137,
+            "y": 96,
             "placeholder": "Preferred type",
             "type": "select",
             "title": "Shopping Preference",
@@ -368,41 +526,10 @@
         {
             "x": 0,
             "width": 12,
-            "y": 139,
+            "y": 98,
             "type": "inferred-text",
             "title": "Sustainable Alternatives",
-            "prompt": "Based on the selected category '[Product Category]' and preference '[Shopping Preference]', and considering the user's profile:\n- Shopping Habits: [Shopping Habits]\n- Environmental Values: [Your EcoDNA Profile]\n\nProvide sustainable shopping recommendations:\n\n1. ECO-FRIENDLY ALTERNATIVES\n- Sustainable material options\n- Durable alternatives\n- Low-impact brands\n\n2. CIRCULAR ECONOMY OPTIONS\n- Second-hand marketplaces\n- Rental possibilities\n- Repair services\n\n3. LOCAL SOLUTIONS\n- Community sharing options\n- Local repair shops\n- Sustainable local businesses\n\n4. IMPACT COMPARISON\n- Environmental benefits\n- Cost considerations\n- Longevity factors\n\n5. SMART SHOPPING TIPS\n- What to look for\n- Questions to ask\n- Red flags to avoid\n\nKeep recommendations practical and focused on reducing environmental impact while maintaining quality and functionality.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 10
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 149,
-            "type": "static-text",
-            "title": "Trip Route Optimizer 🗺️",
-            "content": "Plan your journey in detail and find the most sustainable route options. Enter your destinations to get personalized recommendations considering time, cost, and environmental impact.",
-            "height": 2
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 151,
-            "type": "text-input",
-            "title": "Trip Destinations",
-            "placeholder": "Enter destinations in order (e.g., Home -> Grocery -> Gym -> Home)",
-            "height": 2
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 153,
-            "type": "inferred-text",
-            "title": "Route Analysis",
-            "prompt": "Based on the trip destinations '[Trip Destinations]' and the user's profile:\n- Regular Transport: [Transportation]\n\nProvide a detailed journey optimization analysis:\n\n1. ROUTE OPTIMIZATION\n- Most efficient order of destinations\n- Estimated total distance\n- Alternative routes to consider\n\n2. TRANSPORT OPTIONS\n- Best modes for each segment\n- Multi-modal combinations\n- Weather considerations\n\n3. ENVIRONMENTAL IMPACT\n- CO₂ emissions comparison\n- Resource efficiency\n- Per-segment breakdown\n\n4. TIMING SUGGESTIONS\n- Off-peak travel options\n- Time-saving combinations\n- Activity grouping tips\n\n5. PRACTICAL RECOMMENDATIONS\n- Park-and-ride options\n- Public transit connections\n- Walking/cycling shortcuts\n\nMake suggestions practical and focused on both convenience and environmental impact.",
+            "prompt": "Based on the selected category '[Product Category]' and preference '[Shopping Preference]', and considering the user's shopping profile:\n- Shopping Habits: [Shopping Habits]\n\nProvide sustainable shopping recommendations:\n\n1. ECO-FRIENDLY ALTERNATIVES\n- Sustainable material options\n- Durable alternatives\n- Low-impact brands\n\n2. CIRCULAR ECONOMY OPTIONS\n- Second-hand marketplaces\n- Rental possibilities\n- Repair services\n\n3. LOCAL SOLUTIONS\n- Community sharing options\n- Local repair shops\n- Sustainable local businesses\n\n4. IMPACT COMPARISON\n- Environmental benefits\n- Cost considerations\n- Longevity factors\n\n5. SMART SHOPPING TIPS\n- What to look for\n- Questions to ask\n- Red flags to avoid\n\nKeep recommendations practical and focused on reducing environmental impact while maintaining quality and functionality.",
             "parameters": {
                 "temperature": 0,
                 "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
@@ -412,139 +539,7 @@
         {
             "x": 0,
             "width": 12,
-            "y": 161,
-            "type": "static-text",
-            "title": "Personal Carbon Budget 💳",
-            "content": "Set and track your carbon budget to stay mindful of your environmental impact. Monitor your emissions and get personalized suggestions to meet your goals.",
-            "height": 2
-        },
-        {
-            "min": 1000,
-            "max": 10000,
-            "defaultValue": "5000",
-            "x": 0,
-            "width": 6,
-            "y": 163,
-            "numberWidgetMode": "slider-numeric",
-            "step": 100,
-            "placeholder": "Set your yearly CO₂ target (kg)",
-            "type": "number-input",
-            "title": "Carbon Budget Goal",
-            "height": 2
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 165,
-            "type": "inferred-text",
-            "title": "Budget Analysis",
-            "prompt": "Based on the user's profile and carbon budget goal of [Carbon Budget Goal] kg CO₂/year:\n\nCurrent Profile:\n- Transportation: [Transportation]\n- Diet: [Diet]\n- Energy: [Energy Source]\n- Shopping: [Shopping Habits]\n- Waste: [Waste Management]\n\nProvide a detailed carbon budget analysis:\n\n1. CURRENT STATUS\n- Estimated annual emissions\n- Comparison to budget goal\n- Progress tracking\n\n2. CATEGORY BREAKDOWN\n- Transport emissions\n- Home energy use\n- Food & consumption\n- Other activities\n\n3. REDUCTION OPPORTUNITIES\n- Quick wins\n- Medium-term changes\n- Long-term investments\n\n4. MONTHLY TARGETS\n- Broken down by category\n- Seasonal considerations\n- Milestone suggestions\n\n5. SUCCESS STRATEGIES\n- Specific action items\n- Progress tracking tips\n- Contingency plans\n\nKeep recommendations practical and tailored to the user's current habits.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 10
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 175,
-            "type": "static-text",
-            "title": "Food Carbon Calculator 🍽️",
-            "content": "Calculate the carbon footprint of your meals and discover more sustainable food choices. Get personalized recommendations based on your dietary preferences.",
-            "height": 2
-        },
-        {
-            "defaultValue": null,
-            "x": 0,
-            "width": 6,
-            "options": [
-                "Breakfast",
-                "Lunch",
-                "Dinner",
-                "Snack"
-            ],
-            "y": 177,
-            "placeholder": "Select meal type",
-            "type": "select",
-            "title": "Meal Type",
-            "height": 2
-        },
-        {
-            "x": 6,
-            "width": 6,
-            "y": 177,
-            "type": "text-input",
-            "title": "Main Ingredients",
-            "placeholder": "List main ingredients (e.g., rice, chicken, vegetables)",
-            "height": 2
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 179,
-            "type": "inferred-text",
-            "title": "Meal Impact Analysis",
-            "prompt": "Analyze the environmental impact of a [Meal Type] with ingredients: [Main Ingredients]\nConsider the user's diet profile: [Diet]\n\nProvide a comprehensive meal analysis:\n\n1. CARBON FOOTPRINT\n- Total meal CO₂ impact\n- Per-ingredient breakdown\n- Comparison to alternatives\n\n2. SUSTAINABILITY FACTORS\n- Local vs. imported ingredients\n- Seasonal considerations\n- Production methods\n\n3. NUTRITION & IMPACT BALANCE\n- Nutritional benefits\n- Environmental trade-offs\n- Health considerations\n\n4. IMPROVEMENT SUGGESTIONS\n- Lower-impact alternatives\n- Portion optimization\n- Seasonal swaps\n\n5. PRACTICAL TIPS\n- Storage for minimizing waste\n- Batch cooking ideas\n- Leftover usage\n\nKeep suggestions practical and aligned with user's dietary preferences.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 10
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 189,
-            "type": "static-text",
-            "title": "Environmental Decision Journal 📓",
-            "content": "Track your daily environmental choices and their impact. Build awareness of your habits and identify opportunities for improvement.",
-            "height": 2
-        },
-        {
-            "defaultValue": null,
-            "x": 0,
-            "width": 6,
-            "options": [
-                "Transport",
-                "Food",
-                "Energy",
-                "Shopping",
-                "Waste",
-                "Other"
-            ],
-            "y": 191,
-            "placeholder": "What category was this decision?",
-            "type": "select",
-            "title": "Decision Category",
-            "height": 2
-        },
-        {
-            "x": 6,
-            "width": 6,
-            "y": 191,
-            "placeholder": "What choice did you make? (e.g., walked instead of driving)",
-            "type": "text-input",
-            "title": "Your Decision",
-            "height": 2
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 193,
-            "type": "inferred-text",
-            "title": "Decision Impact Analysis",
-            "prompt": "Analyze the environmental impact of the user's [Decision Category] decision: '[Your Decision]'\nConsider their profile:\n- Regular Transport: [Transportation]\n- Diet: [Diet]\n- Energy: [Energy Source]\n- Shopping: [Shopping Habits]\n- Waste: [Waste Management]\n\nProvide a comprehensive analysis:\n\n1. IMMEDIATE IMPACT\n- Environmental benefit\n- Resource savings\n- Carbon reduction\n\n2. LONG-TERM IMPLICATIONS\n- Habit formation potential\n- Cumulative impact\n- Behavioral insights\n\n3. CONTEXT & PATTERNS\n- Similar past decisions\n- Situational factors\n- Success factors\n\n4. ALTERNATIVE SCENARIOS\n- What other options existed\n- Trade-offs considered\n- Future opportunities\n\n5. REINFORCEMENT & NEXT STEPS\n- Similar situations to watch for\n- Supporting habits to develop\n- Related decisions to consider\n\nKeep the analysis encouraging and focused on building positive habits.",
-            "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
-            },
-            "height": 10
-        },
-        {
-            "x": 0,
-            "width": 12,
-            "y": 203,
+            "y": 100,
             "type": "static-text",
             "title": "Resource Usage Monitor 📈",
             "content": "Track your weekly resource consumption to identify patterns and opportunities for reduction. Enter your usage data below to get personalized recommendations.",
@@ -556,7 +551,7 @@
             "defaultValue": "100",
             "x": 0,
             "width": 4,
-            "y": 205,
+            "y": 102,
             "numberWidgetMode": "slider-numeric",
             "step": 10,
             "placeholder": "Liters per day",
@@ -570,7 +565,7 @@
             "defaultValue": "10",
             "x": 4,
             "width": 4,
-            "y": 205,
+            "y": 102,
             "numberWidgetMode": "slider-numeric",
             "step": 1,
             "placeholder": "kWh per day",
@@ -584,7 +579,7 @@
             "defaultValue": "1",
             "x": 8,
             "width": 4,
-            "y": 205,
+            "y": 102,
             "numberWidgetMode": "slider-numeric",
             "step": 0.5,
             "placeholder": "kg per day",
@@ -593,15 +588,17 @@
             "height": 2
         },
         {
+            "initialUserMessage": "My transportation method is [Transportation], my diet is [Diet], I use [Energy Source] for energy, my shopping habits are [Shopping Habits], and my waste management approach is [Waste Management]. I'm looking for personalized sustainability advice.",
             "x": 0,
             "width": 12,
-            "y": 207,
-            "type": "inferred-text",
-            "title": "Resource Analysis",
-            "prompt": "Based on the user's resource consumption:\n- Water: [Water Usage] L/day\n- Energy: [Energy Usage] kWh/day\n- Waste: [Waste Generated] kg/day\n\nAnd their profile:\n- Energy Source: [Energy Source]\n- Waste Management: [Waste Management]\n\nProvide a comprehensive resource analysis:\n\n1. USAGE PATTERNS\n- Comparison to average household\n- Weekly/monthly projections\n- Seasonal considerations\n\n2. ENVIRONMENTAL IMPACT\n- Water footprint analysis\n- Energy-related emissions\n- Waste lifecycle impact\n\n3. COST IMPLICATIONS\n- Estimated utility costs\n- Potential savings opportunities\n- Return on investment for improvements\n\n4. REDUCTION STRATEGIES\n- Immediate actions\n- Behavioral changes\n- Infrastructure improvements\n\n5. RESOURCE SAVING TIPS\n- Water conservation methods\n- Energy efficiency measures\n- Waste reduction techniques\n\nKeep recommendations practical and specific to the user's consumption patterns.",
+            "y": 104,
+            "placeholder": "Ask me anything about sustainable living!",
+            "type": "chat",
+            "title": "EcoCoach Chat",
+            "initialAssistantMessage": "Hi! I'm your AI EcoCoach, ready to help you make sustainable choices. I can see your lifestyle profile and I'm here to offer personalized advice. Feel free to ask me anything about reducing your environmental impact!",
             "parameters": {
-                "temperature": 0,
-                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0"
+                "model": "bedrock-anthropic.claude-3-5-sonnet-v2-0",
+                "temperature": 0
             },
             "height": 10
         }
